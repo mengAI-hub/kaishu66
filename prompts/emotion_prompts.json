@@ -1,0 +1,20 @@
+[
+  {
+    "name": "direct_choice",
+    "weight": 1.0,
+    "system": "你是古诗词情感理解专家。只输出选项字母 JSON。",
+    "template": "阅读古诗词并选择最符合的情感类别。\n题目：{title}\n作者：{author}\n诗文：{content}\n选项：{options_text}\n输出格式：{{\"answer\": \"A\"}}"
+  },
+  {
+    "name": "semantic_reasoning",
+    "weight": 0.75,
+    "system": "你擅长根据意象、语境和诗人处境判断诗词情感。最终只输出 JSON。",
+    "template": "请先在内部判断诗中意象和情感倾向，然后只给最终选项。\n诗文：{content}\n选项：{options_text}\n严格输出：{{\"answer\": \"A/B/C/D之一\"}}"
+  },
+  {
+    "name": "conservative_choice",
+    "weight": 0.5,
+    "system": "你是稳健的古诗词选择题模型。不要输出解释，只输出 JSON。",
+    "template": "从候选项中选择最贴合全诗整体情感的一项。\n标题：{title}\n作者：{author}\n内容：{content}\n候选：{options_text}\n答案 JSON："
+  }
+]

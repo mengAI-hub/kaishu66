@@ -1,0 +1,20 @@
+[
+  {
+    "name": "few_shot_exam_style",
+    "weight": 1.2,
+    "system": "你是古诗词赏析选择题专家。你要模仿示例题的判断方式，特别注意题目问的是“正确”还是“不正确”。最终只输出 JSON。",
+    "template": "下面是古诗词辨析题。请根据诗文、注释和选项选择答案。\n\n【解题规则】\n1. 如果题目问“不正确的一项”，必须找出错误选项。\n2. 错误选项常见问题：联次判断错误、内容理解错误、情感判断错误、手法判断错误、无中生有、与注释矛盾。\n3. 不要默认选择描述最复杂的选项。\n4. 只输出 JSON：{{\"answer\": \"A\"}}\n\n【当前题目】\n题目：{title}\n作者：{author}\n诗文：\n{content}\n\n注释：\n{zhushi_text}\n\n问题：{question}\n\n选项：\n{options_text}\n\n请只输出 JSON："
+  },
+  {
+    "name": "wrong_option_detector",
+    "weight": 1.0,
+    "system": "你是专门寻找古诗词赏析选项错误的模型。最终只输出 JSON。",
+    "template": "请判断下面选择题的答案。\n\n特别注意：\n- 题干含有“不正确”，就选错误项。\n- 题干含有“正确”，就选正确项。\n- 对每个选项检查：是否准确对应诗句、是否误判情感、是否误判修辞、是否把注释理解错、是否强行引申。\n\n诗文：\n{content}\n\n注释：\n{zhushi_text}\n\n问题：{question}\n\n选项：\n{options_text}\n\n最终只输出 JSON：{{\"answer\": \"A/B/C/D之一\"}}"
+  },
+  {
+    "name": "choice_bias_correction",
+    "weight": 0.9,
+    "system": "你是稳健的选择题模型。不要因为某个选项看起来更长或更文学化就选择它。最终只输出 JSON。",
+    "template": "完成古诗词赏析题。\n\n题目：{title}\n作者：{author}\n诗文：\n{content}\n\n注释：\n{zhushi_text}\n\n问题：{question}\n\n选项：\n{options_text}\n\n提醒：模型容易偏向 B/C 选项，请不要凭感觉选 B/C。必须根据诗文判断。\n\n只输出：{{\"answer\": \"A\"}}"
+  }
+]

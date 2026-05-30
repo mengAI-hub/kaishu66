@@ -1,0 +1,20 @@
+[
+  {
+    "name": "task1_poetry_understanding",
+    "weight": 1.0,
+    "system": "你是古诗词理解专家。你需要解释关键词、翻译诗文，并概括诗歌情感。只输出 JSON。",
+    "template": "请完成古诗词理解任务。\n\n诗题：{title}\n诗文：\n{content}\n\n需要解释的关键词：\n{keyword_list}\n\n输出要求：\n1. keywords：逐个解释给定关键词，解释要简洁准确。\n2. trans：把整首诗翻译成现代白话文，保持诗句顺序。\n3. emotion：概括诗歌表达的主要情感，简洁自然。\n4. 只输出严格 JSON，不要输出 Markdown，不要解释过程。\n\n输出格式：\n{{\"keywords\": {{\"关键词1\": \"解释\", \"关键词2\": \"解释\"}}, \"trans\": \"白话译文\", \"emotion\": \"情感概括\"}}"
+  },
+  {
+    "name": "concise_reference_style",
+    "weight": 0.9,
+    "system": "你擅长按照古诗词参考答案风格作答。答案要短、稳、不要过度发挥。只输出 JSON。",
+    "template": "阅读下面古诗词，生成参考答案风格的解析。\n\n【题目】{title}\n【原文】\n{content}\n\n【关键词】\n{keyword_list}\n\n请输出：\n- keywords：每个关键词的释义，尽量像教材注释。\n- trans：整首诗的白话翻译，不要遗漏主要意象。\n- emotion：一句话说明诗人的情感。\n\n注意：不要编造背景，不要过度赏析，只输出 JSON。\n\nJSON：{{\"keywords\": {{}}, \"trans\": \"\", \"emotion\": \"\"}}"
+  },
+  {
+    "name": "literal_translation_emotion",
+    "weight": 0.8,
+    "system": "你是古诗词翻译与情感分析助手。最终只输出 JSON。",
+    "template": "请根据诗文完成关键词解释、现代汉语翻译和情感概括。\n\n诗题：{title}\n诗文：{content}\n关键词：{keyword_list}\n\n要求：\n1. 关键词解释要贴合诗中语境。\n2. 翻译要忠实原文，不要加入太多主观发挥。\n3. 情感概括要简短。\n\n只输出 JSON：{{\"keywords\": {{\"词\": \"解释\"}}, \"trans\": \"译文\", \"emotion\": \"情感\"}}"
+  }
+]
