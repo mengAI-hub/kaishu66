@@ -1,6 +1,6 @@
-# CCL2026 古诗词任务：仿 CCL25「风格改写 + LoRA + 加权投票」Starter Code
+# CCL2026 古诗词任务：
 
-这套代码仿照你给的 CCL25-Eval 任务5系统报告思路，但把模型限制改为 **10B 以下**：
+
 
 - 默认基座：`Qwen/Qwen2.5-7B-Instruct`
 - 可替换为：`Qwen/Qwen3-8B`、`meta-llama/Llama-3.1-8B-Instruct` 等 10B 以下开源模型
